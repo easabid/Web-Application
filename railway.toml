@@ -3,4 +3,4 @@ builder = "NIXPACKS"
 buildCommand = "composer update --no-dev --optimize-autoloader --with-all-dependencies"
 
 [deploy]
-startCommand = "bash -c 'cd /app && php -r \"file_exists(\".env\") || copy(\".env.example\", \".env\");\" && php artisan key:generate --force && php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT'"
+startCommand = "php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT"
