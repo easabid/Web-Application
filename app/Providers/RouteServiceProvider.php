@@ -34,7 +34,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             // Temporarily removed web middleware for debugging
-            Route::group(base_path('routes/web.php'));
+            Route::group([], function () {
+                require base_path('routes/web.php');
+            });
         });
     }
 }
