@@ -26,12 +26,13 @@ COPY . .
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Create storage link directory structure
+# Create storage and bootstrap cache directories
 RUN mkdir -p /app/storage/app/public \
     && mkdir -p /app/storage/framework/cache \
     && mkdir -p /app/storage/framework/sessions \
     && mkdir -p /app/storage/framework/views \
     && mkdir -p /app/storage/logs \
+    && mkdir -p /app/bootstrap/cache \
     && chmod -R 775 /app/storage \
     && chmod -R 775 /app/bootstrap/cache
 
