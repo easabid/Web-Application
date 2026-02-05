@@ -3,6 +3,6 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "php /app/artisan migrate --force && php /app/artisan serve --host=0.0.0.0 --port=$PORT"
+startCommand = "php /app/artisan migrate --force && php /app/artisan config:cache && php /app/artisan serve --host=0.0.0.0 --port=$PORT --verbose"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
