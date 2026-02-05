@@ -3,6 +3,9 @@ set -e
 
 echo "Starting Laravel application..."
 
+# Change to application directory
+cd /app
+
 # Run migrations
 php artisan migrate --force
 
