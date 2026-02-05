@@ -39,5 +39,5 @@ RUN mkdir -p /app/storage/app/public \
 # Expose port
 EXPOSE 8000
 
-# Start PHP built-in server
-ENTRYPOINT ["sh", "-c", "php -S 0.0.0.0:${PORT:-8000} -t /app/public"]
+# Start PHP built-in server with config cache clear
+ENTRYPOINT ["sh", "-c", "php artisan config:clear && php artisan cache:clear && php -S 0.0.0.0:${PORT:-8000} -t /app/public"]
