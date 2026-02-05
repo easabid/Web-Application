@@ -36,8 +36,11 @@ RUN mkdir -p /app/storage/app/public \
     && chmod -R 777 /app/storage \
     && chmod -R 777 /app/bootstrap/cache
 
+# Clear any cached config/routes/views
+RUN rm -f /app/bootstrap/cache/*.php
+
 # Expose port
 EXPOSE 8000
 
-# Start PHP built-in server with config cache clear
-ENTRYPOINT ["sh", "-c", "php artisan config:clear && php -S 0.0.0.0:${PORT:-8000} -t /app/public"]
+# Start PHP built-in server
+ENTRYPOINT ["sh", "-c", "php -S 0.0.0.0:${PORT:-8000} -t /app/public"]
