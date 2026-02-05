@@ -40,4 +40,4 @@ RUN mkdir -p /app/storage/app/public \
 EXPOSE 8000
 
 # Start PHP built-in server
-CMD php -S 0.0.0.0:${PORT:-8000} -t /app/public
+ENTRYPOINT ["sh", "-c", "php -S 0.0.0.0:${PORT:-8000} -t /app/public"]
