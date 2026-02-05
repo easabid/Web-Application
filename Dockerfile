@@ -40,4 +40,4 @@ RUN mkdir -p /app/storage/app/public \
 EXPOSE 8000
 
 # Start Laravel development server
-CMD ["/bin/sh", "-c", "cd /app && php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
+CMD ["/bin/sh", "-c", "php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
