@@ -1,3 +1,2 @@
 [build]
 builder = "NIXPACKS"
-buildCommand = "composer update --no-dev --optimize-autoloader --with-all-dependencies"
