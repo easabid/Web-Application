@@ -2,7 +2,14 @@
 nixPkgs = ["php82", "php82Packages.composer"]
 
 [phases.install]
-cmds = ["composer update --no-dev --optimize-autoloader --with-all-dependencies"]
+cmds = [
+    "composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction",
+    "php artisan config:cache",
+    "php artisan route:cache"
+]
+
+[phases.build]
+cmds = ["echo 'Build phase complete'"]
 
 [start]
-cmd = "cd /app && php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "php artisan config:clear && php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT"
