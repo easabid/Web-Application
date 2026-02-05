@@ -39,5 +39,5 @@ RUN mkdir -p /app/storage/app/public \
 # Expose port
 EXPOSE 8000
 
-# Start Laravel
-CMD php /app/artisan migrate --force && php /app/artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+# Start PHP built-in server
+CMD php -S 0.0.0.0:${PORT:-8000} -t /app/public
