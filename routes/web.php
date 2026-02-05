@@ -35,14 +35,10 @@ use App\Http\Controllers\Admin\PayoutController;
 |--------------------------------------------------------------------------
 */
 
-// Home/Landing Page - Test route without sessions
+// Home/Landing Page
 Route::get('/', function () {
-    echo 'Laravel Application is Running!<br>';
-    echo 'SESSION_DRIVER: ' . env('SESSION_DRIVER', 'NOT SET') . '<br>';
-    echo 'CACHE_DRIVER: ' . env('CACHE_DRIVER', 'NOT SET') . '<br>';
-    echo 'Database: ' . env('DB_CONNECTION', 'NOT SET');
-    exit;
-})->name('home')->middleware([]);
+    return view('welcome');
+})->name('home');
 
 /*
 |--------------------------------------------------------------------------
