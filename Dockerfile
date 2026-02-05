@@ -23,6 +23,10 @@ WORKDIR /app
 # Copy application files
 COPY . .
 
+# Copy and set permissions for entrypoint
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
@@ -39,5 +43,5 @@ RUN mkdir -p /app/storage/app/public \
 # Expose port
 EXPOSE 8000
 
-# Start Laravel development server
-CMD ["/bin/sh", "-c", "php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
+# Use entrypoint script
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
