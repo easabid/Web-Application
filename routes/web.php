@@ -42,7 +42,7 @@ Route::get('/', function () {
     echo 'CACHE_DRIVER: ' . env('CACHE_DRIVER', 'NOT SET') . '<br>';
     echo 'Database: ' . env('DB_CONNECTION', 'NOT SET');
     exit;
-})->name('home');
+})->name('home')->middleware([]);
 
 /*
 |--------------------------------------------------------------------------
