@@ -38,7 +38,12 @@ use App\Http\Controllers\Admin\PayoutController;
 // Home/Landing Page - Test route without sessions
 Route::get('/', function () {
     return response('Laravel Application is Running! Database: ' . config('database.default'));
-})->name('home')->withoutMiddleware([\Illuminate\Session\Middleware\StartSession::class, \Illuminate\View\Middleware\ShareErrorsFromSession::class]);
+})->name('home')->withoutMiddleware([
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    \App\Http\Middleware\VerifyCsrfToken::class,
+    \App\Http\Middleware\EncryptCookies::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
